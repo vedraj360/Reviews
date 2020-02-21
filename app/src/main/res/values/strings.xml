@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">Reviews</string>
+
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_username">Username</string>
+    <string name="action_sign_in">Register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="Password_Requiored">Password Required</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="title_activity_login1">Sign in</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Sign_In">Sign In</string>
+    <string name="mobile_number">MOBILE NUMBER</string>
+    <string name="ratings_and_reviews">Ratings and reviews</string>
+    <string name="write_a_review">Write a review</string>
+    <string name="rate_this_course">Rate this Course</string>
+    <string name="tell_others_what_you_think">Tell others what you think</string>
+    <string name="_0_0">0.0</string>
+    <string name="pyhton">Pyhton</string>
+    <string name="write_your_review">Write your review</string>
+    <string name="post">POST</string>
+    <string name="discard_draft">Discard draft?</string>
+    <string name="keep">KEEP</string>
+    <string name="discard">DISCARD</string>
+    <string name="contact_user">Contact</string>
+    <string name="best_app">Best App</string>
+    <string name="message">Message</string>
+    <string name="mentor">Vedx</string>
+    <string name="your_review">Your review</string>
+    <string name="edit_your_review">Edit your review</string>
+    <string name="confirm_password">CONFIRM PASSWORD</string>
+    <string name="password">PASSWORD</string>
+    <string name="_20_10_2019">20/10/2019</string>
+    <string name="user__name">Vedx</string>
+    <string name="vedraj360_gmail_com">vedraj360@gmail.com</string>
+    <string name="courses_offered">Courses Offered</string>
+    <string name="send_message">Send Message</string>
+    <string name="write_message">Write Message</string>
+    <string name="send">SEND</string>
+    <string name="user_profile">User Profile</string>
+</resources>

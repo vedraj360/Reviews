@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1085081047664",
+    "firebase_url": "https://reviews-b57d1.firebaseio.com",
+    "project_id": "reviews-b57d1",
+    "storage_bucket": "reviews-b57d1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1085081047664:android:ecd1106f9ed1c3952a9ab5",
+        "android_client_info": {
+          "package_name": "com.vdx.reviews"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1085081047664-4jsvpta01hg7s7pehflorjhsh06bsr7d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vdx.reviews",
+            "certificate_hash": "4d12cef076e429e63818634dcd2a1930762f8be9"
+          }
+        },
+        {
+          "client_id": "1085081047664-do7l9ojnsqetkq5aa0l9q1ghmphn9r8a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAezbp2KPT8zz4kSV2v9R6IJaVhJwqjYJg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1085081047664-do7l9ojnsqetkq5aa0l9q1ghmphn9r8a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
