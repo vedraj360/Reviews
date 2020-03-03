@@ -88,7 +88,7 @@ public class ProfileActivity extends AppCompatActivity {
                 if (!user_Image.equals("default_Image")) {
                     RequestOptions options = new RequestOptions()
                             .centerCrop()
-                            .placeholder(R.drawable.user)
+                            .placeholder(R.drawable.profile_user_white)
                             .diskCacheStrategy(DiskCacheStrategy.ALL)
                             .priority(Priority.HIGH)
                             .dontAnimate()

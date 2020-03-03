@@ -29,6 +29,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.textfield.TextInputEditText;
@@ -41,12 +44,14 @@ import com.google.firebase.database.ValueEventListener;
 import com.vdx.reviews.Adapters.CommentViewHolder;
 import com.vdx.reviews.Models.CommentModel;
 import com.vdx.reviews.R;
+import com.vdx.reviews.Utils.Constants;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Locale;
 import java.util.Objects;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import me.zhanghai.android.materialratingbar.MaterialRatingBar;
 
 public class CourseActivity extends AppCompatActivity {
@@ -57,11 +62,11 @@ public class CourseActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private ImageView courseImage;
+    private CircleImageView edit_user_icon;
     private FirebaseRecyclerAdapter<CommentModel, CommentViewHolder> adapter;
     private ProgressDialog progressDialog;
     public static final String TAG = "COURSE";
     private String COURSE, URL, MENTOR, name, comment, day;
-    ;
     private int total_comments, course_ratings;
     private int rating = 0;
     private LinearLayout editLayout, rateLayout;
@@ -85,6 +90,7 @@ public class CourseActivity extends AppCompatActivity {
         if (pos.equals("in")) {
             checkReview();
         }
+        showImage();
         getRating();
         onEditReviewClick();
 
@@ -107,6 +113,7 @@ public class CourseActivity extends AppCompatActivity {
         tot_ratings = findViewById(R.id.tot_rating);
         all_rating_bar = findViewById(R.id.all_rating_bar);
         all_rating = findViewById(R.id.all_rating);
+        edit_user_icon = findViewById(R.id.edit_user_icon);
 
     }
 
@@ -126,16 +133,28 @@ public class CourseActivity extends AppCompatActivity {
         adapter = new FirebaseRecyclerAdapter<CommentModel, CommentViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull final CommentViewHolder commentViewHolder, int i, @NonNull final CommentModel commentModel) {
+                if (commentModel.getRating() != null && commentModel.getComment() != null && commentModel.getName() != null && commentModel.getDay() != null) {
+                    commentViewHolder.user_rating.setRating(commentModel.getRating());
+                    commentViewHolder.user_review.setText(commentModel.getComment());
+                    commentViewHolder.user_name.setText(commentModel.getName());
+                    commentViewHolder.day.setText(commentModel.getDay());
+                }
+                if (commentModel.getImage() != null) {
+                    if (!commentModel.getImage().equals("default_Image")) {
+                        RequestOptions options = new RequestOptions()
+                                .centerCrop()
+                                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                .priority(Priority.HIGH)
+                                .dontAnimate()
+                                .dontTransform();
+                        Glide.with(getApplicationContext()).load(commentModel.getImage()).apply(options).into(commentViewHolder.user_icon);
+                    }
 
-                commentViewHolder.user_rating.setRating(commentModel.getRating());
-                commentViewHolder.user_review.setText(commentModel.getComment());
-                commentViewHolder.user_name.setText(commentModel.getName());
-                commentViewHolder.day.setText(commentModel.getDay());
+                }
                 commentViewHolder.whats.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         whatsDialog(commentModel.getNumber(), "whatsapp");
-
                     }
                 });
                 commentViewHolder.message.setOnClickListener(new View.OnClickListener() {
@@ -230,9 +249,9 @@ public class CourseActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-
+                    long rate;
                     try {
-                        long rate = (long) Objects.requireNonNull(dataSnapshot.child("rating").getValue());
+                        rate = (long) Objects.requireNonNull(dataSnapshot.child("rating").getValue());
                         rating = (int) rate;
                         name = String.valueOf(Objects.requireNonNull(dataSnapshot.child("name").getValue()));
                         day = String.valueOf(Objects.requireNonNull(dataSnapshot.child("day").getValue()));
@@ -263,6 +282,7 @@ public class CourseActivity extends AppCompatActivity {
             rateLayout.setVisibility(View.GONE);
             edit_comment.setText(comment);
             edit_user_rating.setRating(rating);
+
             edit_user.setText(name);
             edit_day.setText(day);
         } else {
@@ -348,6 +368,20 @@ public class CourseActivity extends AppCompatActivity {
         all_rating.setText(value);
     }
 
+    private void showImage() {
+        if (Constants.image != null) {
+            if (!Constants.image.equals("default_Image")) {
+                RequestOptions options = new RequestOptions()
+                        .centerCrop()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .priority(Priority.HIGH)
+                        .dontAnimate()
+                        .dontTransform();
+                Glide.with(getApplicationContext()).load(Constants.image).apply(options).into(edit_user_icon);
+            }
+
+        }
+    }
 
     private boolean whatsappInstalledOrNot(String uri) {
         PackageManager pm = getPackageManager();

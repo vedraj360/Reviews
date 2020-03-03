@@ -6,6 +6,15 @@ public class CommentModel {
     private String comment;
     private Float rating;
     private String number;
+    private String image;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public String getNumber() {
         return number;

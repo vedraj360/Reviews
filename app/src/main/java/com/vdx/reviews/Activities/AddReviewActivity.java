@@ -130,6 +130,7 @@ public class AddReviewActivity extends AppCompatActivity implements View.OnClick
         databaseReference.child("name").setValue(Constants.name);
         databaseReference.child("day").setValue(day);
         databaseReference.child("number").setValue(Constants.number);
+        databaseReference.child("image").setValue(Constants.image);
         databaseReference.child("rating").setValue(ratingBar.getRating()).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -224,6 +225,7 @@ public class AddReviewActivity extends AppCompatActivity implements View.OnClick
 
     private void rateAdd() {
         prev_rating = (int) rate;
+        Log.e(TAG, "rateAdd: " + prev_rating);
         current_rating = (int) ratingBar.getRating();
         ratings = getIntent().getIntExtra("ratings", 0);
         Log.e(TAG, "editFunction: " + prev_rating + " " + current_rating);

@@ -114,7 +114,6 @@ public class MainActivity extends AppCompatActivity implements BottomSheetDialog
                 return new CourseViewHolder(LayoutInflater.from(getApplicationContext()).inflate(R.layout.course_layout, parent, false));
             }
         };
-
         recyclerView.setAdapter(adapter);
     }
 

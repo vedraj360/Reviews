@@ -28,8 +28,10 @@ public class CommentViewHolder extends RecyclerView.ViewHolder {
         user_name = view.findViewById(R.id.user_name);
         user_review = view.findViewById(R.id.user_comments);
         user_rating = view.findViewById(R.id.user_rating);
+        user_icon = view.findViewById(R.id.user_icon);
         day = view.findViewById(R.id.date);
         whats = view.findViewById(R.id.whats);
         message = view.findViewById(R.id.message);
+
     }
 }
